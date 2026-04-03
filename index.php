@@ -1,21 +1,40 @@
 <?php
 
-class Matematica
+class Fruta
 {
-    // define("PI", 3.14); define nao funciona dentro de classes
-    //readonly É uma propriedade de objeto que só pode ser definida UMA VEZ
-    const PI = 3.14;
+    private $nome;
+    private $peso;
 
 
-    public function calcular($numero):float
+    public function __construct($nome, $peso)
     {
-        return floor($numero * self::PI *100)/100; 
-
+        $this->nome = $nome;
+        $this->peso = $peso;
     }
+
+    public function __destruct()
+    {
+        echo " <br> o objeto " . $this->nome ."foi destruiido <br>" ;
+    }
+
+    public function get_nome()
+    {
+        return $this->nome;
+    }
+    public function get_peso()
+    {
+        return $this->peso;
+    }
+
+    public function get_informacoes(){
+        return "a fruta é ". $this->nome. "e o peso em gramas é ". $this->peso;
+    }
+
 }
 
-$m = new Matematica();
-echo $m->calcular(5);
-echo "<br>";
-//echo $m->PI; NAO FUNCIONA
-echo $m::PI; //FUNCIONA
+$abacate = new Fruta('abacate', 500);
+//O __construct é o método que roda automaticamente quando você cria (instancia) um objeto da classe.
+$fruta1->__construct("Maçã", 150);
+echo  $abacate->get_informacoes();
+
+unset($abacate);
